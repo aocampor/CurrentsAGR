@@ -40,7 +40,7 @@ if __name__ == "__main__":
             if( entr%1000 == 0 or entr == 1):
                   update_progress( float(entr)/float(en)  )
             if( sys.argv[1] == 'Filter'):
-                if(filter(ev.Day , ev.Hour, ev.Minute) == 1):
+                if(filter_barrel(ev.Day , ev.Hour, ev.Minute) == 1):
                     continue
             cu = ev.Current
             we = ev.Wheel

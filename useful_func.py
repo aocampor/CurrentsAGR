@@ -116,6 +116,63 @@ def filter(day,hour,minute):
                 return 1
     return 0
 
+def filter_barrel(day,hour,minute):
+    if(day == 7): 
+        if( hour == 7):
+            if(minute >= 19 and minute <= 24):
+                return 1
+            elif(minute >= 41 and minute <= 50):
+                return 1
+            elif(minute >= 13 and minute <= 13):
+                return 1
+        elif( hour == 10):
+            if(minute >= 26 and minute <= 28):
+                return 1
+        elif( hour == 11):
+            if(minute >= 1 and minute <= 9):
+                return 1
+        elif( hour == 19):
+            if (minute >= 6 and minute <= 12):
+                return 1
+    elif (day == 8):
+        if( hour == 7):
+            if(minute >= 11 and minute <= 13):
+                return 1
+        elif( hour == 11 ):
+            if(minute >= 36 and minute <= 47):
+                return 1
+    elif(day == 9):
+        if( hour == 15):
+            if(minute >= 3 and minute <= 6):
+                return 1
+        elif( hour == 16):
+            if(minute >= 24 and minute <= 25):
+                return 1
+    elif(day == 10):
+        if( hour == 1):
+            if(minute >= 3 and minute <= 8):
+                return 1
+            elif(minute >= 12 and minute <= 14):
+                return 1
+        elif(hour == 13):
+            if(minute >= 0 and minute <= 6):
+                return 1
+    elif(day == 11):
+        if( hour == 13):
+            if(minute >= 0 and minute <= 3):
+                return 1
+        elif( hour == 15):
+            if(minute >= 1 and minute <= 5):
+                return 1
+        elif( hour == 14):
+            if(minute >= 42 and minute <= 46):
+                return 1
+            elif(minute >= 52 and minute <= 54):
+                return 1
+    return 0
+
+
+
 def update_progress(progress):
     barLength = 20 # Modify this to change the length of the progress bar
     status = ""

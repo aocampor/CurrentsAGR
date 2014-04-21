@@ -38,22 +38,26 @@ if __name__ == "__main__":
       entr = 0      
       for ev in tree:
             entr = entr + 1
-            if( entr%1000 == 0 ):
-                #update_progress( float(entr/en)  )
-                sys.stdout.flush()
-                print entr, 'over', en ,  str(float(entr/en) ), '%'
-            if( sys.argv[1] == 'Filter'):
-                  if( filter(ev.Day, ev.Hour, ev.Minute) == 1):
-                        continue
             cu = ev.Current
             we = ev.Wheel
             la = ev.Layer
             se = ev.Sector
             ch = ev.Chamber
+            da = ev.Day
+            ho = ev.Hour 
+            mi = ev.Minute
+            sec = ev.Second
+            if( sys.argv[1] == 'Filter'):
+                  if( entr%1000 == 0 ):
+                        update_progress( float(entr)/float(en)  )
+                  if( filter_barrel(da, ho, mi) == 1):
+                        continue
+            if( cu > 20 and we == 0 and se == 1 and get_chamber(ch,la,se) == 'RB2in' ):
+                  print cu, da, ho, mi, sec 
             name = 'Wheel' + str( get_wheel( we ) ) + 'S' + str(se) + str(get_chamber(ch,la,se)) 
-            tim = TDatime(2014,04,ev.Day,ev.Hour,ev.Minute,ev.Second)
+            tim = TDatime(2014,04,da,ho,mi,sec)
             histories[name+'Time'].append(tim.Convert())
-            histories[name+'Current'].append(ev.Current)
+            histories[name+'Current'].append(cu)
 
       c1 = TCanvas()                  
 
